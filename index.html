@@ -11,20 +11,19 @@
 </head>
 <body class="bg-info">
     <h1 class="page-title fs-1 mt-5 fw-bold text-uppercase text-center">Nice Wheater</h1>
-    <div class="p-5 container d-flex justify-content-center">
-            <div class="input p-1 bg-light rounded rounded-pill shadow-sm input-group mb-3">
-                
-                    <input type="search" class="form-control rounded rounded-pill border-0 bg-light" placeholder="Search Location e.g. Los Angeles, California, United States" aria-label="Recipient's username" aria-describedby="button-addon2" data-search-input>
-                    <button id="button-addon1" type="submit" class="btn btn-link text-primary" data-search-button><i class="fa fa-search"></i></button>
-                
+    <div class="p-5 container d-flex flex-column align-items-center">
+            <div class="input p-1 bg-light rounded rounded-pill shadow-sm input-group">
+                <input type="search" class="form-control rounded rounded-pill border-0 bg-light" placeholder="Search Location e.g. Los Angeles, California, United States" aria-label="Recipient's username" aria-describedby="button-addon2" data-search-input>
+                <button id="button-addon1" type="submit" class="btn btn-link text-primary" data-search-button><i class="fa fa-search"></i></button>
             </div>        
+            <span class="error-message" data-typeerror-message>Couldn't find location. Please check the spell</span>
     </div>
 
     <div class="container">
         <h1 class="fs-6 mb-3">Your Current and Searched Location(s):</h1>
         <ul data-locations-list>
-            <!-- <li class="list-item shadow-sm bg-light justify-content-between align-items-center p-2">
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+            <!-- <li class="list-item shadow-sm justify-content-between align-items-center p-2">
+               <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">            
                <div class="flex-grow-1">
                    <h1 class="fs-2 fw-bold">280°F</h1>
                    <p class="list-items--p2">Min: 279.15°F</p>
@@ -46,11 +45,11 @@
                     <button type="button" class="btn-close p-3" aria-label="Close"></button>
                 </div>
                 
-            </li>             -->
+            </li>              -->
         </ul>
     </div>
             
 </body>
 
-<script src="./js/main.js"></script>
+<script type="module" src="./js/main.js"></script>
 </html>
