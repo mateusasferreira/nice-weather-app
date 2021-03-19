@@ -36,6 +36,7 @@ export function displayLocation(data) {
     </div>`
 
     item.innerHTML = content;
+    item.dataset.city = cityName
     const list = document.querySelector('[data-locations-list]')
     list.appendChild(item);
 
@@ -43,7 +44,21 @@ export function displayLocation(data) {
 
     deleteButton.forEach(button => {
         button.addEventListener('click', event => {
-            event.target.parentNode.parentNode.remove()
+            const li = event.target.parentNode.parentNode
+            deleteLocation(li)
         })
+    })
+}
+
+function deleteLocation (location) {
+    location.remove()
+    const city = location.dataset.city.toLowerCase()
+    const storageData = JSON.parse(localStorage.getItem('Locations'))
+    storageData.forEach(data => {
+    if (data == city) {
+        const index = storageData.indexOf(data)
+        storageData.splice(index, 1);
+        localStorage.setItem('Locations', JSON.stringify(storageData))
+    }        
     })
 }
