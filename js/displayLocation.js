@@ -11,13 +11,24 @@ export function displayLocation(data) {
     const weatherDescrition = data.weather[0].description
     const icon = data.weather[0].icon
 
+    let unit = ' °K'
+    const switcher = document.querySelector('[data-temperature-switcher]')
+    if (switcher.checked) { unit = ' °C'}
+       
+    let warningMessage = ''
+
+    if (minTemp == maxTemp) {
+        warningMessage = 'min and max temperatures may be inaccurate for some locations'
+    }
+
     const item = document.createElement('li');
     item.classList.add('list-item', 'shadow-sm', 'justify-content-between', 'align-items-center', 'p-2');
     const content = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="">
     <div class="flex-grow-1">
-        <h1 class="fs-2 fw-bold">${temp}°K</h1>
-        <p class="list-items--p2">Min: ${minTemp}°K</p>
-        <p class="list-items--p2">Max: ${maxTemp}°K</p>
+        <h1 class="fs-2 fw-bold" data-temperature>${temp} ${unit}</h1>
+        <p class="list-items--p2" data-temperature>Min: ${minTemp} ${unit}</p>
+        <p class="list-items--p2" data-temperature>Max: ${maxTemp} ${unit}</p>        
+        <p class="list-items--p3">${warningMessage}</p>        
     </div>
      <div class=" flex-grow-1 m-2">
          <p class="list-items--p">${cityName}, ${cityCountry}</p>
@@ -62,3 +73,4 @@ function deleteLocation (location) {
     }        
     })
 }
+

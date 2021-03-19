@@ -46,6 +46,12 @@ div, h1, ul, p {
     color: #6E6E6E;
 }
 
+.list-items--p3 {
+    color: red;
+    font-size: .75em;
+    max-width: 180px;
+}
+
 .fa {
     color: grey;
 }
