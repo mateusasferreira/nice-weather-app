@@ -1,23 +1,21 @@
-// browser-sync start --server --file . --host --port 5000 --startPath /index.html
-
 import {getWeatherbyCity} from './getWeather.js'
 import {getWeatherbyGeolocation} from './getWeather.js'
 import {displayLocation} from './displayLocation.js'
-// import {changeToCelcius} from './displayLocation.js'
 
 const button = document.querySelector('[data-search-button]');
 const input = document.querySelector('[data-search-input]');
 
+
 window.addEventListener('load',  function() {
     if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude
             const lon = position.coords.longitude
             getWeatherbyGeolocation(lat, lon)
             .then(data => displayLocation(data))
         })    
     } else {alert('Couldn\'t find current location')}
-
+    
     const storageItems = JSON.parse(localStorage.getItem('Locations')); 
     storageItems.forEach(item => { 
         getWeatherbyCity(item)
@@ -25,7 +23,11 @@ window.addEventListener('load',  function() {
     });
 })
 
-
+document.addEventListener('keydown', function(e) {
+    if(e.key == "Enter"){
+      button.click();
+    }
+});
 
 button.addEventListener('click', ()=> {
     const previousLocations = JSON.parse(localStorage.getItem('Locations')) || []; 
@@ -53,13 +55,5 @@ button.addEventListener('click', ()=> {
     localStorage.setItem('Locations', JSON.stringify(storageData));
     input.value = '' 
 })
-
-
-
-// switcher.addEventListener('click', (event) => {
-//     if (event.target.checked) {
-//         changeToCelcius()
-//     }
-// })
 
 

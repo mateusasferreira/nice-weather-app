@@ -11,9 +11,9 @@ export function displayLocation(data) {
     const weatherDescrition = data.weather[0].description
     const icon = data.weather[0].icon
 
-    let unit = ' °K'
+    let unit = '°K'
     const switcher = document.querySelector('[data-temperature-switcher]')
-    if (switcher.checked) { unit = ' °C'}
+    if (switcher.checked) { unit = '°C'}
        
     let warningMessage = ''
 
@@ -25,9 +25,9 @@ export function displayLocation(data) {
     item.classList.add('list-item', 'shadow-sm', 'justify-content-between', 'align-items-center', 'p-2');
     const content = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="">
     <div class="flex-grow-1">
-        <h1 class="fs-2 fw-bold" data-temperature>${temp} ${unit}</h1>
-        <p class="list-items--p2" data-temperature>Min: ${minTemp} ${unit}</p>
-        <p class="list-items--p2" data-temperature>Max: ${maxTemp} ${unit}</p>        
+        <h1 class="fs-2 fw-bold" data-temperature>${temp}${unit}</h1>
+        <p class="list-items--p2" data-temperature>Min: ${minTemp}${unit}</p>
+        <p class="list-items--p2" data-temperature>Max: ${maxTemp}${unit}</p>        
         <p class="list-items--p3">${warningMessage}</p>        
     </div>
      <div class=" flex-grow-1 m-2">
@@ -35,12 +35,12 @@ export function displayLocation(data) {
          <p class="list-items--p2">${weatherDescrition}</p>
      </div>
      <div class="flex-grow-1 m-2">
-         <p class="list-items--p2">Pressure: ${pressure}</p>
+         <p class="list-items--p2">Pressure: ${pressure} hPa</p>
          <p class="list-items--p2">Humidity: ${humidity}%</p>
      </div>
      <div class="flex-grow-1 m-2">
-         <p class="list-items--p2">Wind Speed: ${windSpeed}</p>
-        <p class="list-items--p2">Wind Deg: ${windDeg}</p>
+         <p class="list-items--p2">Wind Speed: ${windSpeed} m/s</p>
+        <p class="list-items--p2">Wind Direction: ${windDeg} degrees</p>
      </div>
      <div class="ms-2">
          <button type="button" class="btn-close p-3" aria-label="Close" data-delete-button></button>
