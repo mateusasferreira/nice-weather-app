@@ -66,7 +66,7 @@ function deleteLocation (location) {
     const city = location.dataset.city.toLowerCase()
     const storageData = JSON.parse(localStorage.getItem('Locations'))
     storageData.forEach(data => {
-    if (data == city) {
+        if (data === city) {
         const index = storageData.indexOf(data)
         storageData.splice(index, 1);
         localStorage.setItem('Locations', JSON.stringify(storageData))
