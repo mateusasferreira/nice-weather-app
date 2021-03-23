@@ -4,9 +4,12 @@ import {displayLocation} from './displayLocation.js'
 
 const button = document.querySelector('[data-search-button]');
 const input = document.querySelector('[data-search-input]');
+const switcher = document.querySelector('[data-temperature-switcher]')
 
 
 window.addEventListener('load',  function() {
+    switcher.checked = false
+    
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude
@@ -16,7 +19,7 @@ window.addEventListener('load',  function() {
         })    
     } else {alert('Couldn\'t find current location')}
     
-    const storageItems = JSON.parse(localStorage.getItem('Locations')); 
+    const storageItems = JSON.parse(localStorage.getItem('Locations')) || []; 
     storageItems.forEach(item => { 
         getWeatherbyCity(item)
         .then(data => displayLocation(data))        
@@ -33,7 +36,7 @@ button.addEventListener('click', ()=> {
     const previousLocations = JSON.parse(localStorage.getItem('Locations')) || []; 
     const value = input.value;
     const unit = () => {
-    const switcher = document.querySelector('[data-temperature-switcher]')    
+        
         let value 
         if (switcher.checked) {
             value = 'metric'
