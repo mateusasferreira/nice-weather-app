@@ -6,7 +6,7 @@ const button = document.querySelector('[data-search-button]');
 const input = document.querySelector('[data-search-input]');
 const switcher = document.querySelector('[data-temperature-switcher]')
 
-//the app didn't work properly storaging and deleting data from the local host on mobile browsers, so I've just chosen to enable this storaging just for other devices, as it s not a core functionality
+//the app didn't work properly storaging and deleting data from the local storage on mobile browsers, so I've just chosen to enable this storaging just for other devices, as it is not a core functionality
 const isMobile = () => {
     return ( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 800 ) )
 }
@@ -65,7 +65,7 @@ button.addEventListener('click', ()=> {
     })   
     
     input.value = '' 
-    
+
     //checks if device is mobile 
     if (isMobile()) return
 
