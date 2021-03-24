@@ -6,10 +6,16 @@ const button = document.querySelector('[data-search-button]');
 const input = document.querySelector('[data-search-input]');
 const switcher = document.querySelector('[data-temperature-switcher]')
 
+//the app didn't work properly storaging and deleting data from the local host on mobile browsers, so I've just chosen to enable this storaging just for other devices, as it s not a core functionality
+const isMobile = () => {
+    return ( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 800 ) )
+}
 
 window.addEventListener('load',  function() {
+    // for firefox
     switcher.checked = false
     
+    //checks is geolocation is enabled, and if true it gets the weather for the current location 
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude
@@ -19,7 +25,11 @@ window.addEventListener('load',  function() {
         })    
     } else {alert('Couldn\'t find current location')}
     
-    const storageItems = JSON.parse(localStorage.getItem('Locations')) || []; 
+    //checks if the device is mobile 
+    if (isMobile()) return
+
+    //if false, then it gets data from local storage and display locations
+    const storageItems = JSON.parse(localStorage.getItem('Locations')) 
     storageItems.forEach(item => { 
         getWeatherbyCity(item)
         .then(data => displayLocation(data))        
@@ -54,9 +64,16 @@ button.addEventListener('click', ()=> {
             }
     })   
     
+    input.value = '' 
+    
+    //checks if device is mobile 
+    if (isMobile()) return
+
+    //if false, then it add the new location to local storage, along with the previous ones
     const storageData = [...previousLocations, value]
     localStorage.setItem('Locations', JSON.stringify(storageData));
-    input.value = '' 
+    
 })
+
 
 
