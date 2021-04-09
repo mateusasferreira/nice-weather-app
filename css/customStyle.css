@@ -1,3 +1,7 @@
+body {
+    background-color: #1E1E1E;
+}
+
 .page-title {
     color: white;
 }
@@ -29,7 +33,8 @@
 }
 
 .list-item {
-    background-color: white;
+    background-color: #DEDEDE;
+    padding: 2rem;
     width: 100%;
     min-height: 5em;
     max-height: fit-content;
@@ -49,7 +54,7 @@ div, h1, ul, p {
 }
 
 .list-items--p {
-    font-size: 1.2rem;
+    font-size: 1.26rem;
     color: #191919;
 }
 
