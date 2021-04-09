@@ -21,7 +21,7 @@ window.addEventListener('load',  function() {
         })    
     } else {alert('Couldn\'t find current location')}
     
-    const storageItems = JSON.parse(localStorage.getItem('Locations')) 
+    const storageItems = JSON.parse(localStorage.getItem('Locations') || "[]") 
     storageItems.forEach(item => { 
         getWeatherbyCity(item)
         .then(data => displayLocation(data))        
@@ -35,8 +35,8 @@ document.addEventListener('keydown', e => {
 });
 
 button.addEventListener('click', ()=> {
-    const previousLocations = JSON.parse(localStorage.getItem('Locations')) || []; 
-    const value = input.value.toLowerCase();
+    const previousLocations = JSON.parse(localStorage.getItem('Locations') || "[]") ; 
+    const value = input.value.toLowerCase().trim();
     const unit = () => {
         
         let value 
