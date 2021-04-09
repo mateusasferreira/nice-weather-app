@@ -32,15 +32,21 @@ body {
     padding-left: 1em;
 }
 
+.list {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
 .list-item {
     background-color: #DEDEDE;
     padding: 2rem;
-    width: 100%;
-    min-height: 5em;
-    max-height: fit-content;
+    width: calc(33% - 1em);    
     border-radius: 10px;   
     margin-bottom: 1em; 
+    margin-left: 1em;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 ol, ul {
@@ -54,7 +60,8 @@ div, h1, ul, p {
 }
 
 .list-items--p {
-    font-size: 1.26rem;
+    font-size: 1.25rem;
+    font-weight: bold;
     color: #191919;
 }
 
@@ -68,16 +75,27 @@ div, h1, ul, p {
     max-width: 180px;
 }
 
+.list-items--p4 {
+    font-size: 1.15rem;
+}
+
 .fa {
     color: grey;
 }
 
 @media screen and (max-width: 767px) {
     .list-item {
+        width: calc(50% - 1em);
         flex-wrap: wrap;
     }
     
     .input {
         width: 100%;
     }    
+}
+
+@media screen and (max-width: 420px) {
+    .list-item {
+        width: 100%;
+    }
 }
