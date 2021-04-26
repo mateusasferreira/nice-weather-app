@@ -24,7 +24,7 @@ window.addEventListener('load',  function() {
     const storageItems = JSON.parse(localStorage.getItem('Locations') || "[]") 
     storageItems.forEach(item => { 
         getWeatherbyCity(item)
-        .then(data => displayLocation(data))        
+        .then(data => displayLocation(data, item))        
     });
 })
 
@@ -49,7 +49,7 @@ button.addEventListener('click', ()=> {
     getWeatherbyCity(value, unit())
     .then(data => {
         try {
-            displayLocation(data);                     
+            displayLocation(data, value);                     
             span.classList.remove('error-message--active')            
         } catch {            
             span.classList.add('error-message--active')            

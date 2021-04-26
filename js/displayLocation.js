@@ -1,4 +1,4 @@
-export function displayLocation(data) {
+export function displayLocation(data, id) {
   const cityName = data.name;
   const cityCountry = data.sys.country;
   const temp = data.main.temp;
@@ -50,7 +50,7 @@ export function displayLocation(data) {
     </div>`;
 
   item.innerHTML = content;
-  item.dataset.city = cityName;
+  item.dataset.id = id;
   const list = document.querySelector("[data-locations-list]");
   list.appendChild(item);
 
@@ -66,10 +66,10 @@ export function displayLocation(data) {
 
 function deleteLocation(location) {
   location.remove();
-  const city = location.dataset.city.toLowerCase();
+  const id = location.dataset.id
   const storageData = JSON.parse(localStorage.getItem("Locations"));
   storageData.map((data, index) => {
-    if (data === city) {
+    if (data == id) {
       var index = index;
       storageData.splice(index, 1);
       localStorage.setItem("Locations", JSON.stringify(storageData));
