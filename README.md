@@ -10,7 +10,7 @@
 ### ⚙️ Functionalities
 - Access current location 
 - Search for other location's data
-- Save and delete search parameters through local storage
+- Save and delete search parameters and persist data through local storage
 
 
 ### 🔧 Tecnologies
